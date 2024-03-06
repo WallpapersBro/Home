@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WallpaperBro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.6/font/bootstrap-icons.min.css">
+  <style>
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px;
+    }
+    #searchbar {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: blue;
+      font-size: 30px;
+    }
+    .sticky-top {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .image-container img {
+        max-width: calc(50% - 20px);
+      }
+      .navbar-brand {
+        font-size: 24px;
+      }
+    }
+    @media (max-width: 576px) {
+      .image-container img {
+        max-width: 100%;
+      }
+    }
+    .custom-navbar {
+    box-shadow: 0px 12px 20px rgba(61, 61, 236, 0.967); /* Customize the shadow as per your need */
+  }
+ 
+  body {
+    /* Gradient from left to right and right to left */
+    background: linear-gradient(to right, #596ae9 -52%, #ffffff 70%), linear-gradient(to left,  #675be8 -52%, #ffffff 70%);
+    background-position: left, right; /* Positioning for both gradients */
+    background-repeat: no-repeat; /* Prevent gradient repetition */
+    background-size: 50%, 50%; /* Adjust size of each gradient */
+}
+
+
+  #copyright{
+    color: gray;
+  }
+  .image-wrapper {
+    position: relative;
+}
+
+.downloadButton {
+    position: absolute;
+    bottom: 70px; /* Adjust button position */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: rgba(34, 27, 219, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image-wrapper:hover .downloadButton {
+    opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black p-3 sticky-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="./public/images/updatedwhitelogo.png" height="65px" width="262px"><span class="font-arial"></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="category">Categories</a>
+                <a class="nav-link" href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+  <nav class="navbar bg-light">
+    <div class="container">
+      <form class="d-flex w-100 justify-content-center" role="search" id="searchbar" onsubmit="event.preventDefault(); search();">
+        <span class="bi bi-search"></span>
+        <input class="form-control me-2 border-primary border-2 text-center" type="search" id="searchInput" placeholder='"search your desired image here"' aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container text-center mt-1">
+    <h1 id="category">Movies</h1><hr>
+  </div>
+
+  <div class="container" id="imageContainer">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4">
+      <div class="col"><div class="image-wrapper"><img src="./public/images/pk1.jpg" alt="pawankalyan"                                                                                    class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/prabas2.jpg" alt="prabas"                                                                               class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/jahnavi2.jpg" alt="jahnavi"                                                                      class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/jahnavi1.jpg" alt="jahnavi"                                                                             class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/ntr2.jpg" alt="ntr"                                                                                     class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/viswak1.jpg"                       alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen HIT 2.jpg"      alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen HIT.jpg"        alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen LOVE.jpg"       alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen NTR.jpg"        alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/vishwaksen.jpg"             alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwa.jpg"                 alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen 3.jpg"          alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen.jpg"            alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Vishwak Sen2.jpg"           alt="viswak"                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/rc1.jpg"                           alt="ramcharan"                                                      class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Ram charan evadu.jpg"       alt="ramcharan"                                                      class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Ram charan as Govindhu.jpg" alt="ramcharan"                                                      class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/ntr1.jpg" alt="ntr"                                                                                     class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/pk2.jpg" alt="pawankalyan"                                                                                    class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/ntr3.jpg" alt="pawankalyan"                                                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/blackgami.jpg" alt="viswak"                                                                             class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/prabas4.jpg" alt="prabas"                                                                               class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/pk2.jpg" alt="pawankalyan"                                                                                    class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/prabas3.jpg" alt="prabas"                                                                               class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/pk2.jpg" alt="pawankalyan"                                                                                    class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/nani1.jpg" alt="nani"                                                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/baahubali_2_the_conclusion_5k.jpg" alt="nani"                                                    class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/naninana.jpg" alt="nani"                                                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/naninana2.jpg" alt="nani"                                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/naninana3.jpg" alt="nani"                                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya 4.jpg"      alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya sam.jpg"    alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya.jpg"        alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya2.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya3.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya4.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya5.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya6.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Chaitanya7.jpg"       alt="nagachaitanya"                                                   class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Shaurya 1.jpg"     alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Shaurya 2.jpg"     alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Shaurya 3.jpg"     alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Shaurya 5.jpg"     alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/NAGA shourya chalo.jpg" alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Naga Shaurya.jpg"       alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/NAGA shourya.jpg"       alt="nagashowrya"                                                        class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/ntr temper.jpg"             alt="ntr"                                                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/ntrdevara.jpg"              alt="ntr"                                                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/ntrrc.jpg"                  alt="ntr"                                                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Ram charan NTR RRR.jpg"     alt="ntr"                                                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/NTR janatha garage.jpg"     alt="ntr"                                                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/allu arjun sam nithya.jpg"        alt="alluarjun"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Allu Arjun Sam.jpg"               alt="alluarjun"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Allu Arjun1.jpg"                  alt="alluarjun"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Allun Arjun.jpg"                  alt="alluarjun"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/duvvada-jagannadham-allu-arjun-uhd-4k-wallpaper.jpg"                  alt="alluarjun"            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/baahubali-2-the-conclusion-anushka-shetty-devasena-prabhas-uhd-4k-wallpaper.jpg"  alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/baahubali-2-the-conclusion-uhd-4k-wallpaper.jpg"                                  alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/baahubali-2-the-conclusion-uhd-8k-wallpaper.jpg"                                  alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/baahubali_2_the_conclusion_5k.jpg"                                                alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/bahubali.jpg"                                                                     alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/blade-runner-officer-k-uhd-8k-wallpaper.jpg"                                      alt="bahubali" class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlingbahu.jpg"                                         alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlingblood.jpg"                                        alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlingdance.jpg"                                        alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlinghat.jpg"                                          alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlingmirchi.jpg"                                       alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/darlingsmile.jpg"                                        alt="prabas"                            class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/farzi shahid.jpg"                                            alt="farzi"                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/farzi vijay sethupathi and shahid.jpg"                       alt="farzi"                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/farzi.jpg"                                                   alt="farzi"                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Gunturu karam 1 .jpg"                                    alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinana.jpg"                                              alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinanaboth.jpg"                                          alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinanaclose.jpg"                                         alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinanafam.jpg"                                           alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinanamrunal.jpg"                                        alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hinananani.jpg"                                          alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hn-01.jpg"                                               alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/hn4-01.jpg"                                              alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery #HiNanna.jpg"                                  alt="nani"                              class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (11).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (10).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (12).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (13).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (7).jpg"                 alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (9).jpg"                 alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/LEO HDgallery  (14).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Leo 1 (0).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery LEO 1 (1).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery LEO 1 (2).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Leo 1 (4).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Leo 1 (5).jpg"                alt="leo"                                                class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mahesh babu.jpg"          alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbbd.jpg"                 alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbchairpose.jpg"          alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbdrink.jpg"              alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbfight.jpg"              alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbgatepose.jpg"           alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbgrace.jpg"              alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbkurchipose.jpg"         alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbmadathapetti.jpg"       alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbminakshi.jpg"           alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbpose.jpg"               alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbr.jpg"                  alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbrace.jpg"               alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbsingle.jpg"             alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbright.jpg"              alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbsittingpose.jpg"        alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/mbyek.jpg"                alt="maheshbabu"                                                       class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (1).jpg"       alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (10).jpg"      alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (11).jpg"      alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (2).jpg"       alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (5).jpg"       alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (6).jpg"       alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/HDgallery Vikram HD Stills (7).jpg"       alt="vikram"                                           class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/vijaydevarakonada.jpg"                alt="vijaydevarakonda"                                     class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/vijaydevarakonda2.jpg"                alt="vijaydevarakonda"                                     class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin 3.jpg"                              alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin rashmika.jpg"                       alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin sam.jpg"                            alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin.jpg"                                alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin1.jpg"                               alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin2.jpg"                               alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/Nithiin3.jpg"                               alt="nithin"                                         class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/RAM PO 1.jpg"         alt="ram"                                                                  class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+      <div class="col"><div class="image-wrapper"><img src="./public/images/movies/RAm po.jpg"           alt="ram"                                                                  class="img-fluid"><button class="downloadButton">Download Now</button></div></div>
+    </div>
+  </div>
+  <div class="container text-center mt-5">
+    <h1 id="category">Message Us</h1>
+    <p>What images you want send us a message</p>
+  </div>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+          <div class="container-fluid">
+            <form method="post" action="" name="contact-form">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your Email address</label>
+                <input type="email" class="form-control border-1 border-primary" name="Email" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Your Message</label>
+                <textarea class="form-control border-1 border-primary" name="Message" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button type="submit" id="submit" value="Submit" class="btn btn-primary w-100 mb-3">Send Message</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="conatiner text-center mt-4">
+    <img src="./public/images/thnksbro-removebg-preview.png" class="img-fluid">
+  </div>
+  
+  
+  <div class="card text-center bg-black mt-5 p-4">
+    <div class="container">
+      <div class="row  align-items-center">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="text-primary" id="flogo">
+            <h5 class="mt-3"><img src="./public/images/foterlogobro.png" height="60%" width="120%" class="img-fluid"></h5>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card-body">
+            <a href="#" class="text-light">About</a><br>
+            <a href="#" class="text-light">Categories</a><br>
+            <a href="#" class="text-light">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer mt-3" id="copyright">
+      AllRightsReserved@2024.wallpapersbro
+    </div>
+  </div>
+
+
+  <script>
+    // Search function
+    function search() {
+        let input = document.getElementById('searchInput').value.toUpperCase();
+        let container = document.getElementById('imageContainer');
+        let images = container.getElementsByTagName('img');
+
+        for (let i = 0; i < images.length; i++) {
+            let altText = images[i].alt.toUpperCase();
+            if (altText.includes(input)) {
+                images[i].parentElement.parentElement.style.display = "";
+            } else {
+                images[i].parentElement.parentElement.style.display = "none";
+            }
+        }
+    }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZUESeeuKOjbUsU1K-T4tgpqxJCRZYW316Dc6h6xcPaTd3jVoh4XE83fiXnOCrNWzh/exec'
+    // Form submission
+    const form = document.forms['contact-form'];
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Thank you! Your form has been submitted successfully.");
+                    form.reset();
+                } else {
+                    alert("Oops! Something went wrong.");
+                }
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
+
+    // Download button functionality
+    const downloadButtons = document.querySelectorAll('.downloadButton');
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const image = button.previousElementSibling;
+            const link = document.createElement('a');
+            link.href = image.src;
+            link.download = 'image.jpg';
+            link.click();
+        });
+    });
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

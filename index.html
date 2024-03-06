@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WallpaperBro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.6/font/bootstrap-icons.min.css">
+  <style>
+    .navbar-brand {
+      font-weight: bold;
+      color: blue;
+      font-size: 30px;
+    }
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+    .navbar-nav {
+      flex-direction: column;
+      margin-top: 10px;
+    }
+    #searchbar {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .image-container img {
+      max-width: 100%;
+    }
+    .flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flexitem {
+      margin: 10px;
+    }
+    .navbar-brand, #category, #dclick {
+      color: blue;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      width: 100%;
+    }
+    #footertext {
+      margin-left: 38%;
+    }
+    #flogo {
+      font-size: 30px;
+    }
+    .card-footer {
+      margin-top: 20px;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 767px) {
+      .navbar-brand {
+        font-size: 24px;
+      }
+      .navbar-brand img {
+        height: 40px;
+        width: 60px;
+      }
+      .image-container img {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+  .carousel-item {
+    margin-bottom: -220px; /* Adjust margin-bottom as needed */
+  }
+  }
+
+
+    @media only screen and (min-width: 768px) {
+      .navbar-brand {
+        font-size: 30px;
+      }
+      .navbar-brand img {
+        height: 50px;
+        width: 80px;
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+      .navbar-brand {
+        font-size: 36px;
+      }
+      .navbar-brand img {
+        height: 60px;
+        width: 100px;
+      }
+    }
+    .carousel-inner .carousel-item {
+       height: 500px; /* Set a fixed height for all carousel items */
+    }
+    button {
+    position: relative;
+    padding: 12px 35px;
+    background: #144cc4;
+    font-size: 17px;
+    font-weight: 1000;
+    color: #ffffff;
+    border: 3px solid #144cc4;
+    border-radius: 8px;
+    box-shadow: 0 0 0 #ffffff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .star-1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+  }
+  
+  .star-2 {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 1scubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-3 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-4 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #144cc4);
+    z-index: -5;
+    transition: all 0.8s ease;
+  }
+  
+  button:hover {
+    background: transparent;
+    color: #19191a;
+    box-shadow: 0 0 0px #144cc4;
+  }
+  
+  button:hover .star-1 {
+    position: absolute;
+    top: -80%;
+    left: -30%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  button:hover .star-2 {
+    position: absolute;
+    top: -0%;
+    left: 10%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  button:hover .star-3 {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  button:hover .star-4 {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  button:hover .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 115%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  button:hover .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0px #144cc4);
+    z-index: 2;
+  }
+  
+  .fil0 {
+    fill: #144cc4;
+  }
+  .navbar{
+    box-shadow: #144cc4;
+  }
+  .custom-navbar {
+    box-shadow: 0px 12px 20px rgba(61, 61, 236, 0.967); /* Customize the shadow as per your need */
+  }
+ 
+  body {
+    /* Gradient from left to right and right to left */
+    background: linear-gradient(to right, #596ae9 -52%, #ffffff 70%), linear-gradient(to left,  #675be8 -52%, #ffffff 70%);
+    background-position: left, right; /* Positioning for both gradients */
+    background-repeat: no-repeat; /* Prevent gradient repetition */
+    background-size: 50%, 50%; /* Adjust size of each gradient */
+}
+#contact{
+  font-weight: bold;
+  color: blue;
+  font-size: 30px;
+}
+
+#copyright{
+  color: gray;
+}
+#mainlogo{
+  height: 65px;
+  width: 268px;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black p-2 sticky-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="./public/images/updatedwhitelogo.png" id="mainlogo" alt="WallpaperBro Logo">
+            <span class="font-arial"></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="#" onclick="scrollToCategory()">Categories</a>
+                <a class="nav-link" href="#" onclick="scrollToContact()">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+  
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active mt-2">
+      <img src="public/images/mianrrr.jpg" height="1000px"  class="d-block w-100 img-fluid" alt="..." >
+    </div>
+    <div class="carousel-item mt-2">
+      <img src="./public/images/bro3.jpg"  height="1000px" class="d-block w-100 img-fluid" alt="..." >
+    </div>
+    <div class="carousel-item mt-2">
+      <img src="./public/images/mainvintage.jpg"  height="1000px" class="d-block w-100 img-fluid" alt="...">
+    </div>
+  </div>
+</div>
+<div class="container text-center mt-4 mb-4">
+  <h3><span class="text-primary">"</span>Elevate your digital space with our curated collection.<span class="text-primary">"</span></h3>
+  </div>
+</div>
+  <div class="container text-center  mt-1">
+    <h1 id="category">Categories</h1>
+    <p>Search images by category</p>
+    <div class="container text-center mt-1">
+      <div class="row">
+        <div class="col-md-4">
+          <h3><a href="moviesbro.html"><button>
+            Movies
+          <div class="star-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+            
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </button></h3>
+          <div class="image-container">
+              <a href="moviesbro.html">
+                <img class="img-fluid mb-2" src="./public/images/movie1-removebg-preview.png" alt="Movie 1">
+              </a>
+             
+          </div>
+      </div>
+        <div class="col-md-4">
+          <h3><a href="animebro.html"><button>
+            Anime
+          <div class="star-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+            
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </button></h3>
+          <div class="image-container">
+            <a href="animebro.html"><img class="img-fluid mb-2" src="./public/images/anime-removebg-preview (2).png" alt="Anime 1"></a>
+        
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h3><a href="vintagebro.html"><button>
+            Vintage
+          <div class="star-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+            
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div class="star-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+              viewBox="0 0 784.11 815.53"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs></defs>
+              <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <path
+                  class="fil0"
+                  d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </button></h3>
+          <div class="image-container">
+            <a href="vintagebro.html"><img class="img-fluid mb-2" src="./public/images/vintage-removebg-preview.png" alt="Vintage 1"></a>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center mt-4">
+    <h1 id="category">Downloads</h1>
+    <p>Your perfect collection here</p>
+    <h1 class="dclick mt-5">As Easy as .One Click</h1>
+  </div>
+
+  <div class="container text-center mt-5">
+    <h1 id="contact">Message Us</h1>
+    <p>What images you want send us a message</p>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+          <div class="container-fluid">
+            <form method="post" action="" name="contact-form" class="form-check">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your Email address</label>
+                <input type="email" class="form-control border-1 border-primary" name="Email" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Your Message</label>
+                <textarea class="form-control border-1 border-primary" name="Message" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button type="submit" id="submit" value="Submit" class="btn btn-primary w-100 mb-3">
+                Send Message
+              <div class="star-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xml:space="preserve"
+                  version="1.1"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  viewBox="0 0 784.11 815.53"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      class="fil0"
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conatiner text-center mt-4">
+    <img src="./public/images/thnksbro-removebg-preview.png" class="img-fluid">
+  </div>
+
+  <div class="card text-center bg-black mt-5 p-4">
+    <div class="container">
+      <div class="row  align-items-center">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="text-primary" id="flogo">
+            <h5 class="mt-3"><img src="./public/images/foterlogobro.png" height="60%" width="120%" class="img-fluid"></h5>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card-body">
+            <a href="about.html" class="text-light">About</a><br>
+            <a href="#" class="text-light" onclick="scrollToCategory()">Categories</a><br>
+            <a href="#" class="text-light" onclick="scrollToContact()">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer  mt-3" id="copyright">
+      AllRightsReserved@2024.wallpapersbro
+    </div>
+  </div>
+
+
+  <script>
+    window.onload = function() {
+        const images = document.querySelectorAll('.image-container img');
+        images.forEach((image, index) => {
+            const zIndex = 500 - index * 10; // Adjust the factor as needed
+            image.style.zIndex = zIndex;
+        });
+    };
+    function scrollToCategory() {
+      const targetId = "category"; // Set the target ID
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offset = targetElement.offsetTop;
+        window.scroll({
+          top: offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+    function scrollToContact() {
+      const targetId = "contact"; // Set the target ID
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offset = targetElement.offsetTop;
+        window.scroll({
+          top: offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwZUESeeuKOjbUsU1K-T4tgpqxJCRZYW316Dc6h6xcPaTd3jVoh4XE83fiXnOCrNWzh/exec'
+      
+    const form = document.forms['contact-form']
+      
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert("Thank you! your form is submitted successfully." ))
+      .then(() => { window.location.reload(); })
+      .catch(error => console.error('Error!', error.message))
+    })
+
+
+
+
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
